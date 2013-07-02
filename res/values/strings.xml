@@ -1,5 +1,10 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:xliff:document:1.2">
 
-    <string name="app_name">anRadio</string>
+    <string name="app_name">anRadio Widget</string>
+	
+	<string name="appwidget_configure_instructions">This text will be shown before the date in our example widget.</string>
+    <string name="appwidget_prefix_default">Oh hai</string>
+    <string name="appwidget_text_format"><xliff:g id="prefix">%1$s</xliff:g>: <xliff:g id="time">%2$s</xliff:g></string>
 
+    
 </resources>
