@@ -30,9 +30,6 @@ import java.util.ArrayList;
  * instance created, in order to only receive notifications when we need them.
  */
 public class ExampleBroadcastReceiver extends BroadcastReceiver {
-
-	public static String PLAY_INTENT=
-		    "com.dkroz.anradio.widget.PLAY";
 	
     @Override
     public void onReceive(Context context, Intent intent) {

@@ -28,6 +28,9 @@
 	            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 	            <action android:name="android.appwidget.action.APPWIDGET_DELETED" />
     			<action android:name="android.appwidget.action.APPWIDGET_DISABLED" />
+    			
+    			<action android:name="com.dkroz.anradio.widget.PLAY"/>
+    			
 	        </intent-filter>
 	    	<meta-data 
 	    	    android:name="android.appwidget.provider"

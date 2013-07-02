@@ -49,6 +49,11 @@ public class ExampleAppWidgetProvider extends AppWidgetProvider {
     // log tag
     private static final String TAG = "ExampleAppWidgetProvider";
 
+    
+	public static String PLAY_INTENT=
+		    "com.dkroz.anradio.widget.PLAY";
+	
+	
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d(TAG, "onUpdate");
