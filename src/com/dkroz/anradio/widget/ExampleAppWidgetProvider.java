@@ -18,14 +18,15 @@ package com.dkroz.anradio.widget;
 
 import java.util.Calendar;
 
-import com.dkroz.anradio.R;
+import com.dkroz.radio.R;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.SystemClock;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -50,8 +51,7 @@ public class ExampleAppWidgetProvider extends AppWidgetProvider {
     private static final String TAG = "ExampleAppWidgetProvider";
 
     
-	public static String PLAY_INTENT=
-		    "com.dkroz.anradio.widget.PLAY";
+	public static String PLAY_STOP_WIDGET_RECEIVER = "PLAY_STOP_WIDGET_RECEIVER";
 	
 	
     @Override
@@ -61,12 +61,31 @@ public class ExampleAppWidgetProvider extends AppWidgetProvider {
         //   - Create a RemoteViews object for it
         //   - Set the text in the RemoteViews object
         //   - Tell the AppWidgetManager to show that views object for the widget.
-        final int N = appWidgetIds.length;
+        
+        /*final int N = appWidgetIds.length;
         for (int i=0; i<N; i++) {
             int appWidgetId = appWidgetIds[i];
             String titlePrefix = ExampleAppWidgetConfigure.loadTitlePref(context, appWidgetId);
             updateAppWidget(context, appWidgetManager, appWidgetId, titlePrefix);
-        }
+            
+        }*/
+        
+        
+        super.onUpdate(context, appWidgetManager, appWidgetIds);
+
+        RemoteViews rmViews = new RemoteViews(context.getPackageName(), R.layout.appwidget_provider);
+
+        Intent active = new Intent(context, ExampleAppWidgetProvider.class);
+        active.setAction(PLAY_STOP_WIDGET_RECEIVER);
+        active.putExtra("msg", "Message for Button 1");
+        PendingIntent configPendingIntent = PendingIntent.getBroadcast(context, 0, active, 0);
+
+        rmViews.setOnClickPendingIntent(R.id.start_stop, configPendingIntent);
+
+        appWidgetManager.updateAppWidget(appWidgetIds, rmViews );
+        
+        
+        
     }
     
     @Override
@@ -105,6 +124,14 @@ public class ExampleAppWidgetProvider extends AppWidgetProvider {
                 PackageManager.DONT_KILL_APP);
     }
 
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+            if(intent.getAction().equals(PLAY_STOP_WIDGET_RECEIVER)) {
+                Log.d(TAG, intent.getAction());
+            }
+    }
+    
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
             int appWidgetId, String titlePrefix) {
         Log.d(TAG, "updateAppWidget appWidgetId=" + appWidgetId + " titlePrefix=" + titlePrefix);

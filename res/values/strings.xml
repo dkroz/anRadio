@@ -1,6 +1,6 @@
 <resources xmlns:xliff="urn:oasis:names:xliff:document:1.2">
 
-    <string name="app_name">anRadio Widget</string>
+    <string name="app_name">Nashe Radio Widget</string>
 	
 	<string name="appwidget_configure_instructions">This text will be shown before the date in our example widget.</string>
     <string name="appwidget_prefix_default">Oh hai</string>

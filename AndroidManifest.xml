@@ -1,8 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dkroz.anradio"
+    package="com.dkroz.radio"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="0.0.1" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="17" />
@@ -10,42 +11,19 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-    
-	    <activity android:name=".widget.ExampleAppWidgetConfigure">
-		    <intent-filter>
-		    	<action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-		    </intent-filter>
-	    </activity>
+        android:label="@string/app_name">
         
-        <receiver 
-            android:name=".widget.ExampleAppWidgetProvider"
-            android:exported="true">
-            
-	    	<intent-filter>
-	        	<action android:name="android.appwidget.action.APPWIDGET_ENABLED" />
-	            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-	            <action android:name="android.appwidget.action.APPWIDGET_DELETED" />
-    			<action android:name="android.appwidget.action.APPWIDGET_DISABLED" />
-    			
-    			<action android:name="com.dkroz.anradio.widget.PLAY"/>
-    			
-	        </intent-filter>
-	    	<meta-data 
-	    	    android:name="android.appwidget.provider"
-	        	android:resource="@xml/appwidget_provider" />
-        </receiver>
-
-        <receiver android:name=".widget.ExampleBroadcastReceiver" android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.TIME_SET" />
-                <action android:name="android.intent.action.TIME_TICK" />
-                <action android:name="android.intent.action.TIMEZONE_CHANGED" />                
-            </intent-filter>
-    	</receiver>
-	    
-    
+	    <receiver android:name=".MyWidgetProvider" >
+		    <intent-filter>
+		        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+		    </intent-filter>
+		    <meta-data android:name="android.appwidget.provider"
+		               android:resource="@xml/radio_widget_info" />
+		</receiver>
+		
+	    <service android:name=".MyWidgetProvider$UpdateService" />
+		<service android:name=".MyWidgetProvider$PlayerService" />
+	    	    
     </application>    
-    
+
 </manifest>

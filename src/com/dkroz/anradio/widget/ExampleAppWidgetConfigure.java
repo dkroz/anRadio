@@ -27,7 +27,7 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
-import com.dkroz.anradio.R;
+import com.dkroz.radio.R;
 
 
 /**
