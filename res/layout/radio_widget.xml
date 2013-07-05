@@ -17,13 +17,20 @@
    	    android:text="TEST test" />
     
    	<ImageView 
-   	    android:id="@+id/start_stop"
+   	    android:id="@+id/start"
    	    android:layout_width="32dp"
    	    android:layout_height="32dp"
    	    android:layout_margin="12dp"
    	    android:layout_gravity="center"
-   	    android:src="@android:drawable/ic_media_play"/>
-   	<!-- android:src="@android:drawable/ic_media_stop" -->
+   	    android:src="@android:drawable/ic_media_play" />
+   	<ImageView 
+   	    android:id="@+id/stop"
+   	    android:layout_width="32dp"
+   	    android:layout_height="32dp"
+   	    android:layout_margin="12dp"
+   	    android:layout_gravity="center"
+   		android:src="@android:drawable/ic_media_pause"
+   		android:visibility="gone" />
 
    	<ImageView 
    	    android:id="@+id/settings"
